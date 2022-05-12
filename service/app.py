@@ -22,4 +22,6 @@ with open('data/coco.names', 'r') as f:
 # генерируем цвета для каждого объекта и последующего построения
 colors = np.random.randint(0, 255, size=(len(labels), 3), dtype='uint8')
 
-
+# загружаем сеть YOLO
+# документация https://docs.opencv.org/3.4/d6/d0f/group__dnn.html#gaef8ac647296804e79d463d0e14af8e9d
+net = cv2.dnn.readNetFromDarknet(config_path, weights_path)
