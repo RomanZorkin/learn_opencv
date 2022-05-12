@@ -19,6 +19,7 @@ weights_path = 'weights/yolov3.weights'
 with open('data/coco.names', 'r') as f:
     labels = f.read().strip().split('\n')
 #labels = open("data/coco.names").read().strip().split("\n")
+
 # генерируем цвета для каждого объекта и последующего построения
 colors = np.random.randint(0, 255, size=(len(labels), 3), dtype='uint8')
 
