@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "learn_opencv"
+version = "0.1.0"
+description = ""
+authors = ["RomanZorkin <zorkin.roman@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^1.11.0"
+torchvision = "^0.12.0"
+torchaudio = "^0.11.0"
+opencv-python = "^4.5.5"
+numpy = "^1.22.3"
+matplotlib = "^3.5.2"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.950"
+pylint = "^2.13.8"
+wemake-python-styleguide = "^0.16.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
