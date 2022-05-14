@@ -1,9 +1,7 @@
 import logging
-from re import A
 import time
 from pathlib import Path
 from typing import Any
-
 
 import cv2
 import numpy as np
@@ -31,9 +29,9 @@ with open(labels_path, 'r') as f:
 colors = np.random.randint(0, 255, size=(len(labels), 3), dtype='uint8')
 
 
-def image_prepare(image_path: Path) -> cv2:
+def image_prepare(image: Path) -> cv2:
     # подготовка изображения
-    return cv2.imread(str(image_path))
+    return cv2.imread(str(image))
 
 
 def layer_outputs(image: cv2) -> cv2:
@@ -86,8 +84,7 @@ def create_entities(image: cv2, h: int, w: int) -> tuple[list[Any], list[Any], l
                 boxes.append([x, y, int(width), int(height)])
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
-
-    logg.info(f'detection.shape: {detection.shape}')
+            logg.info(f'detection.shape: {detection.shape}')
     return (boxes, confidences, class_ids)
 
 
