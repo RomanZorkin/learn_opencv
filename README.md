@@ -24,3 +24,5 @@ https://habr.com/ru/post/519454/
 MASK-RCNN для поиска крыш по снимкам с беспилотников
 https://habr.com/ru/company/lanit/blog/500752/
 
+статья про pytorch https://neurohive.io/ru/tutorial/glubokoe-obuchenie-s-pytorch/
+и репозитарий к ней https://github.com/adventuresinML/adventures-in-ml-code/blob/master/pytorch_nn.py
