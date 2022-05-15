@@ -40,6 +40,7 @@ def run():
 def test():
     logger.debug('start testing')
     _, test = get_data()
+    logger.debug(test.batch_size)
     correct, total = test_net(net_path=model_path, dataset=test)
     message = 'Accuracy of the network on the {0} test images: {1}%'.format(
         len(test),
