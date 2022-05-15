@@ -134,3 +134,4 @@ weights/
 # Datasets
 simple_net/data/
 simple_net_cnn/data/
+simple_net_cnn/models/
