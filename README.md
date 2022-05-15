@@ -45,3 +45,5 @@ https://habr.com/ru/company/lanit/blog/500752/
 5. статья pytorch cnn модель для обработки изображений
 https://towardsdatascience.com/how-to-apply-a-cnn-from-pytorch-to-your-images-18515416bba1
 и репозитарий с кодом https://github.com/alexkhrustalev/DS_projects/blob/master/cats_and_dogs.py
+
+6. статья как склеить свою обученную модель и opencv https://habr.com/ru/post/478208/ и еще https://habr.com/ru/post/494804/

@@ -63,17 +63,24 @@ def create_entities(image: cv2, h: int, w: int) -> tuple[list[Any], list[Any], l
         for detection in output:
             # извлекаем идентификатор класса (метку) и достоверность (как вероятность)
             # обнаружение текущего объекта
+            
             scores = detection[5:]
+            
             class_id = np.argmax(scores)
             confidence = scores[class_id]
             # отбросьте слабые прогнозы, убедившись, что обнаруженные
             # вероятность больше минимальной вероятности
             if confidence > CONFIDENCE:
+                logg.debug(f'detection: {detection}')
+                logg.debug(f'scores: {scores}')
+                logg.debug(f'confidence: {confidence}')
                 # масштабируем координаты ограничивающего прямоугольника относительно
                 # размер изображения, учитывая, что YOLO на самом деле
                 # возвращает центральные координаты (x, y) ограничивающего
                 # поля, за которым следуют ширина и высота поля
                 box = detection[:4] * np.array([w, h, w, h])
+                logg.debug(f'detection 4: {detection[:4]}')
+                logg.debug(f'box: {box}')
                 (centerX, centerY, width, height) = box.astype('int')
                 # используем центральные координаты (x, y) для получения вершины и
                 # и левый угол ограничительной рамки
@@ -84,7 +91,7 @@ def create_entities(image: cv2, h: int, w: int) -> tuple[list[Any], list[Any], l
                 boxes.append([x, y, int(width), int(height)])
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
-            logg.info(f'detection.shape: {detection.shape}')
+            #logg.info(f'detection.shape: {detection.shape}')
     return (boxes, confidences, class_ids)
 
 

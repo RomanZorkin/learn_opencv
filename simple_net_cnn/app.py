@@ -5,17 +5,15 @@ import matplotlib.pyplot as plt
 import torch
 from torch.utils.data import DataLoader
 
-from simple_net_cnn.cnn import Net
-from simple_net_cnn.dataset import get_data
-from simple_net_cnn.train import train_net
-from simple_net_cnn.testing import test_net
 from simple_net_cnn.convertor import change_type
-
+from simple_net_cnn.dataset import get_data
+from simple_net_cnn.testing import test_net
+from simple_net_cnn.train import train_net
 
 logger = logging.getLogger(__name__)
 
 model_path = Path('simple_net_cnn/models/cat_dogs.pth')
-
+whole_model_path = Path('simple_net_cnn/models/cat_dogs.pt')
 
 def image_show(dataset: DataLoader, numbers: int = 5):
     """Функция показывает первые 5 (по умолчанию) картинок датасета"""
@@ -36,6 +34,7 @@ def run():
     train, _ = get_data()
     net = train_net(dataset=train, epochs=10)
     torch.save(net.state_dict(), str(model_path))
+    torch.save(net, str(whole_model_path))
 
 
 def test():
