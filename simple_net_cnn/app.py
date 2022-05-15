@@ -9,6 +9,7 @@ from simple_net_cnn.cnn import Net
 from simple_net_cnn.dataset import get_data
 from simple_net_cnn.train import train_net
 from simple_net_cnn.testing import test_net
+from simple_net_cnn.convertor import change_type
 
 
 logger = logging.getLogger(__name__)
@@ -47,3 +48,7 @@ def test():
         100 * correct / total,
     )
     logger.debug(message)
+
+
+def convert():
+    change_type(model_path)

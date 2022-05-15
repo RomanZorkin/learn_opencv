@@ -7,6 +7,9 @@ from simple_net_cnn.cnn import Net
 
 
 def test_net(net_path: Path, dataset: DataLoader) -> tuple[int, int]:
+    """Функция тестирует модель на отобранных данных и возвращает
+    общее количество проверенных обектов и количество верных
+    """
     net = Net()
     net.load_state_dict(torch.load(str(net_path)))
     correct = 0

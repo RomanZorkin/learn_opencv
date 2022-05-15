@@ -2,7 +2,7 @@ import logging
 
 import typer
 
-from simple_net_cnn import app
+from recognizer import app
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -10,18 +10,8 @@ typer_app = typer.Typer()
 
 
 @typer_app.command()
-def train():
+def run():
     app.run()
-
-
-@typer_app.command()
-def test():
-    app.test()
-
-
-@typer_app.command()
-def convert():
-    app.convert()
 
 
 if __name__ == '__main__':
