@@ -130,3 +130,7 @@ dmypy.json
 
 # Weights file
 weights/
+
+# Datasets
+simple_net/data/
+simple_net_cnn/data/
