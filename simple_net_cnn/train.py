@@ -35,11 +35,11 @@ def train_net(dataset: DataLoader, net: Net = net, epochs: int = 10,) -> Net:
             # log statistics
             losses.append(loss)
             running_loss += loss.item()
-            if num % 100 == 99:  # log every 2000 mini-batches
+            if num % 10 == 9:  # log every 2000 mini-batches
                 message = '[{0}, {1}] loss: {2:.10f}'.format(
                     epoch + 1,
                     num + 1,
-                    running_loss / 2000,
+                    running_loss / 200,
                 )
                 logger.info(message)
     
@@ -48,6 +48,6 @@ def train_net(dataset: DataLoader, net: Net = net, epochs: int = 10,) -> Net:
     # заменить return self.numpy() на return self.detach().numpy()
     plt.plot(losses, label='Training loss')
     plt.show()
-    logger.debug('Finish training')
+    logger.info('Finish training')
 
     return net

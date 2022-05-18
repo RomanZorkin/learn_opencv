@@ -2,7 +2,7 @@ lint:
 	@flake8 service
 	@mypy service
 
-run:
+recognize:
 	@python -m recognizer
 
 run_model:
@@ -11,8 +11,12 @@ run_model:
 run_nn_net:
 	@python -m simple_net
 
-run_cnn_net:
-	@python -m simple_net_cnn
+train_cnn_net:
+	@python -m simple_net_cnn train
 
 test_cnn_net:
 	@python -m simple_net_cnn test
+
+
+convert_cnn_net:
+	@python -m simple_net_cnn convert

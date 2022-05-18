@@ -11,7 +11,7 @@ typer_app = typer.Typer()
 
 @typer_app.command()
 def run():
-    app.run()
+    app.recognize()
 
 
 if __name__ == '__main__':
