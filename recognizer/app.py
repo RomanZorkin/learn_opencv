@@ -35,7 +35,7 @@ def recognize():
         net_layers = layers.get_layers(net, image)
         logger.debug(f'net_layers: {net_layers}')
         biggest_pred_index = np.array(net_layers).argmax()
-        #image_tags = tags.create_tags(image, net_layers)
+        image_tags = tags.create_tags(image, net_layers)
         #logger.debug(image_tags)
         logger.debug(biggest_pred_index)
         #logger.debug(max(image_tags['confidences']))

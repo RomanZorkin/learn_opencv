@@ -17,6 +17,5 @@ train_cnn_net:
 test_cnn_net:
 	@python -m simple_net_cnn test
 
-
 convert_cnn_net:
 	@python -m simple_net_cnn convert
