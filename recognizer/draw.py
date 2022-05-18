@@ -1,2 +1,2 @@
 def draw(layers):
-    
+    pass
