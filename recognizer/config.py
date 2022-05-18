@@ -1,6 +1,6 @@
 from pathlib import Path
 
-model_name = 'wolf'
+model_name = 'cat_dogs'
 
 CONFIDENCE = 0.5
 SCORE_THRESHOLD = 0.5

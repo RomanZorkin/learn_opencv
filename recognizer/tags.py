@@ -22,6 +22,7 @@ def create_tags(image: cv2, layers: cv2) -> dict[str, list[Any]]:
         logger.debug(confidence)
         if confidence > config.CONFIDENCE:
             mark = np.argmax(detection)
+            logger.debug(mark)
             tags['marks'].append(mark)
             tags['confidences'].append(confidence)
     return tags

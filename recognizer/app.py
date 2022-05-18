@@ -28,7 +28,7 @@ def create_image(image: Path) -> cv2:
 
 def recognize():
     for image_path in images.iterdir():
-        logger.debug('start _run function')
+        logger.debug('\nstart _run function')
         net = create_net(onnx_model_path)
         image = create_image(image_path)
         (h, w) = image.shape[:2]
@@ -36,6 +36,6 @@ def recognize():
         logger.debug(f'net_layers: {net_layers}')
         biggest_pred_index = np.array(net_layers).argmax()
         image_tags = tags.create_tags(image, net_layers)
-        #logger.debug(image_tags)
-        logger.debug(biggest_pred_index)
+        logger.debug(image_tags)
+        logger.debug(f'biggest {biggest_pred_index}')
         #logger.debug(max(image_tags['confidences']))

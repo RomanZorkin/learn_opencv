@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_layers(net: cv2, image: cv2) -> cv2:
-    blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (32, 32), swapRB=True, crop=False)
+    blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (128, 128), swapRB=True, crop=False)
     logger.debug(f'image.shape: {image.shape}, blob.shape {blob.shape}')
 
     # усанавливаем blob как вход сети
@@ -18,4 +18,4 @@ def get_layers(net: cv2, image: cv2) -> cv2:
     ln = [ln[i - 1] for i in net.getUnconnectedOutLayers()]
     logger.debug(f'Имена слоев: {ln}')
 
-    return net.forward(ln)
+    return net.forward()
