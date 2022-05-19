@@ -8,8 +8,8 @@ model = {
     },
     'cat_dogs': {
         'resolution': (128, 128),
-        'scalefactor': 285,
-        'confidence': 0.11,
+        'scalefactor': 311,
+        'confidence': 0.12,
     },
 }
 model_name = 'cat_dogs'
