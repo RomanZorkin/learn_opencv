@@ -5,14 +5,16 @@ model = {
         'resolution': (32, 32),
         'scalefactor': 68,
         'confidence': 0.15,
+        'labels': ('tiger', 'wolf')
     },
     'cat_dogs': {
-        'resolution': (128, 128),
-        'scalefactor': 311,
-        'confidence': 0.12,
+        'resolution': (229, 229),
+        'scalefactor': 100,
+        'confidence': 0.10,
+        'labels': ('cat', 'dog')
     },
 }
-model_name = 'cat_dogs'
+model_name = 'wolf_tiger'
 
 
 CONFIDENCE = model[model_name]['confidence']
@@ -22,4 +24,4 @@ IOU_THRESHOLD = 0.5
 MODEL_PATH = Path(f'recognizer/models/{model_name}.onnx')
 RESOLUTION = model[model_name]['resolution']
 SCALEFACTOR = 1.0 / model[model_name]['scalefactor']
-
+LABELS = model[model_name]['labels']
