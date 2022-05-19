@@ -4,7 +4,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from recognizer import config, layers, tags
+from recognizer import config, draw, layers, tags
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ labels = ['cats', 'dogs', 'ground']
 colors = np.random.randint(0, 255, size=(len(labels), 3), dtype='uint8')
 
 
-def create_net(net_path: Path):
+def create_net(net_path: Path) -> cv2:
     """Загружаем модель распознования."""
     logger.debug(f'Загружается модель: {net_path}')
     return cv2.dnn.readNetFromONNX(str(net_path))
@@ -22,20 +22,24 @@ def create_net(net_path: Path):
 
 def download_image(image: Path) -> cv2:
     """Преобразование изображения в объект cv2"""
-    logger.debug(f'Текущее изображение: {image.stem}')
+    logger.info(f'Текущее изображение: {image.stem}')
     return cv2.imread(str(image))
 
 
 def recognize():
-    logger.debug('start _run function')
+    logger.info('\n\nstart _run function')
     net = create_net(onnx_model_path)
 
     for image_path in images.iterdir():
-        logger.debug('\n\n')
+        if not image_path.suffix:
+            continue
         image = download_image(image_path)
         (h, w) = image.shape[:2]
 
         net_layers = layers.get_layers(net, image)
         image_tags = tags.create_tags(image, net_layers)
 
-        logger.debug(image_tags)
+        logger.info(image_tags)
+        if not image_tags['label']:
+            continue
+        draw.draw(image, image_tags)
