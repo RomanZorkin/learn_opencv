@@ -23,6 +23,7 @@ def test_net(net_path: Path, dataset: DataLoader) -> tuple[int, int]:
             images, labels = data
             outputs = net(images)
             _, predicted = torch.max(outputs.data, 1)
+            logger.debug(f'labels : {labels}, predicted: {predicted}, outputs: {outputs}')
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 

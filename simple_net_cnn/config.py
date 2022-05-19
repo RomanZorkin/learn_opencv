@@ -1,6 +1,6 @@
 from pathlib import Path
 
-animal = 'wolf'
+animal = 'wolf_tiger'
 
 MODEL_PATH = Path(f'simple_net_cnn/models/{animal}.pth')
 WHOLE_MODEL_PATH = Path(f'simple_net_cnn/models/{animal}.pt')

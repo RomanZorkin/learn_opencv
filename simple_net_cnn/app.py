@@ -39,7 +39,7 @@ def run():
     logger.debug(f'Train dataset: {train}')
     logger.debug(f'Classes: {classes}, sizes: {sizes}')
     #image_show(train)
-    net = train_net(dataset=train, epochs=11)
+    net = train_net(dataset=train, epochs=15)
     torch.save(net.state_dict(), str(model_path))
     #torch.save(net, str(whole_model_path))
 

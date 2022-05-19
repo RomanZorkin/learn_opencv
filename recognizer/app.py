@@ -20,22 +20,22 @@ def create_net(net_path: Path):
     return cv2.dnn.readNetFromONNX(str(net_path))
 
 
-def create_image(image: Path) -> cv2:
+def download_image(image: Path) -> cv2:
     """Преобразование изображения в объект cv2"""
     logger.debug(f'Текущее изображение: {image.stem}')
     return cv2.imread(str(image))
 
 
 def recognize():
+    logger.debug('start _run function')
+    net = create_net(onnx_model_path)
+
     for image_path in images.iterdir():
-        logger.debug('\nstart _run function')
-        net = create_net(onnx_model_path)
-        image = create_image(image_path)
+        logger.debug('\n\n')
+        image = download_image(image_path)
         (h, w) = image.shape[:2]
+
         net_layers = layers.get_layers(net, image)
-        logger.debug(f'net_layers: {net_layers}')
-        biggest_pred_index = np.array(net_layers).argmax()
         image_tags = tags.create_tags(image, net_layers)
+
         logger.debug(image_tags)
-        logger.debug(f'biggest {biggest_pred_index}')
-        #logger.debug(max(image_tags['confidences']))
