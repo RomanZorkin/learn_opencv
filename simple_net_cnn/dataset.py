@@ -1,12 +1,10 @@
-from pathlib import Path
-
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
 from simple_net_cnn import config
 
 
-def get_data() -> tuple[DataLoader, DataLoader]:
+def get_data() -> tuple[DataLoader, DataLoader, list[str], dict[str, int]]:
     """Подготавливаем данные для обработки.
 
     Из дирректории с датасетом указываются два пути на набор данных для обучения и для тестирования
@@ -16,9 +14,9 @@ def get_data() -> tuple[DataLoader, DataLoader]:
     test_path = config.TEST_PATH
 
     transform = transforms.Compose([
-        transforms.RandomResizedCrop(128),
+        transforms.RandomResizedCrop(32),
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+        transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
     ])
 
     train_set = datasets.ImageFolder(str(train_path), transform=transform)
@@ -27,4 +25,10 @@ def get_data() -> tuple[DataLoader, DataLoader]:
     train = DataLoader(train_set, batch_size=32, shuffle=True)
     test = DataLoader(test_set, batch_size=32, shuffle=True)
 
-    return train, test
+    classes = train_set.classes
+    sizes = {
+        'train': len(train_set),
+        'test': len(test_set),
+    }
+
+    return train, test, classes, sizes

@@ -17,11 +17,14 @@ model_path = config.MODEL_PATH
 whole_model_path = config.WHOLE_MODEL_PATH
 
 def image_show(dataset: DataLoader, numbers: int = 5):
-    """Функция показывает первые 5 (по умолчанию) картинок датасета"""
+    """Функция показывает первые 5 (по умолчанию) картинок датасета."""
 
-    sorts = ('cat', 'dog')
+    # извлекаем список объектов для распознования предусмотренных моделью
+    sorts = dataset.dataset.classes
+
     dataiter = iter(dataset)
     images, labels = dataiter.next()
+    logger.debug(labels)
     fig, axes = plt.subplots(figsize=(10, 4), ncols=numbers)
     for number in range(numbers):
         ax = axes[number]
@@ -32,16 +35,18 @@ def image_show(dataset: DataLoader, numbers: int = 5):
 
 def run():
     logger.debug('start app.run')
-    train, _ = get_data()
-    image_show(train)
-    net = train_net(dataset=train, epochs=10)
+    train, _, classes, sizes = get_data()
+    logger.debug(f'Train dataset: {train}')
+    logger.debug(f'Classes: {classes}, sizes: {sizes}')
+    #image_show(train)
+    net = train_net(dataset=train, epochs=15)
     torch.save(net.state_dict(), str(model_path))
-    torch.save(net, str(whole_model_path))
+    #torch.save(net, str(whole_model_path))
 
 
 def test():
     logger.debug('start testing')
-    _, test = get_data()
+    _, test, classes, sizes = get_data()
     logger.debug(test.batch_size)
     correct, total = test_net(net_path=model_path, dataset=test)
     message = 'Accuracy of the network on the {0} test images: {1}%'.format(
