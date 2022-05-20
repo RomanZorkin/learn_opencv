@@ -58,6 +58,7 @@ make recognize
 ```bash
 python -m recognizer
 ```
+## Репозитарий с датасетом
 
 ## Ссылки на обучающий материал
 
