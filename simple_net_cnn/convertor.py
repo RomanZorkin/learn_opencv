@@ -18,5 +18,5 @@ def change_type(net_path: Path) -> None:
     dir_name = net_path.parent
     new_model = Path(dir_name, config.MODEL_NAME)
     logger.debug(new_model)
-    dummy_input = Variable(torch.randn(1, 3, 128, 128))
+    dummy_input = Variable(torch.randn(1, 3, 32, 32))
     torch.onnx.export(net, dummy_input, new_model)

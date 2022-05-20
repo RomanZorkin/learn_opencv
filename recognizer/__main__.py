@@ -4,7 +4,7 @@ import typer
 
 from recognizer import app
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 typer_app = typer.Typer()
 
