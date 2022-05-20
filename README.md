@@ -59,6 +59,7 @@ make recognize
 python -m recognizer
 ```
 ## Репозитарий с датасетом
+https://disk.yandex.ru/d/f9RHNOecdMooTQ
 
 ## Ссылки на обучающий материал
 
