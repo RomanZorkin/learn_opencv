@@ -58,10 +58,8 @@ make recognize
 ```bash
 python -m recognizer
 ```
-После классификации изображений, распознанные переносятся в папку images/output и подписываются согласно их типу
-
-## Репка с датасетом, саченным KAGLE
-https://disk.yandex.ru/d/gMLmMnLQMtOz_Q
+## Репозитарий с датасетом
+https://disk.yandex.ru/d/f9RHNOecdMooTQ
 
 ## Ссылки на обучающий материал
 
